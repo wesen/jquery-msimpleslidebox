@@ -4,10 +4,8 @@
  Homepage: http://manos.malihu.gr/slidebox-jquery-banner-rotator
  */
 (function ($) {
-  var slideboxID = 0;
-
+  $(document).data("slideboxID", 0);
   $.fn.mSlidebox = function (options) {
-
     var defaults = { //default options
       autoPlayTime:7000, //milliseconds
       animSpeed:1000, //milliseconds
@@ -16,14 +14,13 @@
       numberedThumbnails:false, //display numbers inside thumbnails
       pauseOnHover:true //boolean
     };
-
     var options = $.extend(defaults, options);
-
     return this.each(function () {
       var slidebox = $(this);
+      var slideboxID = $(document).data("slideboxID");
       slideboxID++;
-      slidebox.wrap("<div class='slideboxContainer slideboxContainer_" + slideboxID + "' />");
-
+      $(document).data("slideboxID", slideboxID);
+      slidebox.wrap("<div class='slideboxContainer slideboxContainer_" + $(document).data("slideboxID") + "' />");
       var slideboxContainer = slidebox.parent(".slideboxContainer");
       var autoPlayTimer;
       var slideboxWidth = slidebox.width();
@@ -33,7 +30,6 @@
       var slideboxTotalWidth;
       var slideboxEnd;
       var slideboxStart = "0";
-
       if (slideboxSlide.length > 1) { //if more than 1 slides
         autoPlayTimer = setInterval(autoPlay, options.autoPlayTime);
         var autoPlayState = "on";
@@ -66,7 +62,6 @@
           e.preventDefault();
           SlideboxAction($(this).attr("rel"));
         });
-
         slideboxNext.click(function (e) {
           e.preventDefault();
           SlideboxAction("next", "stop");
@@ -75,7 +70,6 @@
           e.preventDefault();
           SlideboxAction("previous", "stop");
         });
-
         if (options.pauseOnHover) {
           slidebox.hover(function () {
             clearInterval(autoPlayTimer);
@@ -91,13 +85,11 @@
           $(this).addClass("slideboxSlide slideboxSlide_1").children().addClass("slideboxCaption");
         });
       }
-
       function autoPlay() {
         SlideboxAction("next");
       }
 
       slideboxSlides.css("left", 0);
-
       function SlideboxAction(slideTo, autoPlay) {
         var leftPosition = parseInt(slideboxSlides.css("left"));
         if (!slideboxSlides.is(":animated")) {
