@@ -29,6 +29,10 @@
       var slideboxSlide = slideboxSlides.children("li");
       var slideboxTotalWidth;
       var slideboxEnd;
+      $(this).on("stopSlideshow", function () {
+        clearInterval(autoPlayTimer);
+        autoPlayState = "off";
+      });
       var slideboxStart = "0";
       if (slideboxSlide.length > 1) { //if more than 1 slides
         autoPlayTimer = setInterval(autoPlay, options.autoPlayTime);
