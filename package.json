@@ -1,0 +1,20 @@
+{
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/goldeneagle/jquery-msimpleslidebox/issues"
+  },
+  "dependencies": {},
+  "description": "",
+  "homepage": "https://github.com/goldeneagle/jquery-msimpleslidebox#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "jquery-msimpleslidebox",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/goldeneagle/jquery-msimpleslidebox.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" \u0026\u0026 exit 1"
+  },
+  "version": "1.0.0"
+}
